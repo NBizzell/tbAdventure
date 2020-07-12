@@ -44,11 +44,11 @@ class Room {
 
 //Rooms
 const room1 = new Room ("Kitchen", "large", "no one's been here in a while. . north is the lounge, there's a bathroom to the east","grey and dirty. . the colour of misery");
-const room2 = new Room ("Lounge", "huge", "someone trashed the place. . signs of a struggle? kitchen is to the south. .  there's a dark door to the west.. and more blood. . answers often lie behind every door. . maybe this is where the story ends?  ","filthy");
+const room2 = new Room ("Lounge", "huge", "someone trashed the place. . signs of a struggle? kitchen is to the south. .  there's a dark door to the west.. blood trails to the east. . looks like the bedroom is east. . answers often lie behind every door. . maybe this is where the story ends?  ","filthy");
 const room3 = new Room ("Bathroom", "tiny", "all the problems started. . or ended here. . the blood leads north, the kitchen is to the west","covered in blood");
 const room4 = new Room ("Garage", "dirty", "it's never been cleaned, junk everywhere. .  The kitchen is to the East, it's not the most inviting of places..","covered in old posters. ");
-const room5 = new Room ("bedroom", "cold", "someone came in through the window while they slept..  the lounge is to the west. . blood and drag marks lead from there.. bathroom to the south. .","pink. . the wallpaper is peeling.. underneath is old white paint. . flaking away. .");
-const room6 = new Room ("cellar", "dark", "there's no way out of here, except the way you came in","wet. . ");
+const room5 = new Room ("bedroom", "cold", "someone came in through the window while they slept..  the lounge is to the west. . blood and drag marks lead from there.. bathroom to the south. . more blood trails that way","pink. . the wallpaper is peeling.. underneath is old white paint. . flaking away. .");
+const room6 = new Room ("cellar. . the door bolts as you enter. . ", "dark", "you're trapped. . you can't see anything. .","wet. . ");
 
 //Room1 links
 room1.linkRoom ("north", room2);
@@ -72,17 +72,20 @@ room5.linkRoom ("south", room3);
 room5.linkRoom ("west", room2);
 
 //Room6 links
-room6.linkRoom ("east", room2);
+//room6.linkRoom ("east", room2);
 
 // display Room function
 function displayRoominfo(room){
     text = room.describe()
 
     document.getElementById("roomid").innerHTML = text;
-    
+
     document.getElementById("characterid").innerHTML = room.character.name;
-    
+
     document.getElementById("convo").innerHTML = room.character.dialogue;
+    
+    /*let characterIntro = "in my " + room.character.description + " " + room.character.conversation;
+    document.getElementById("convo").innerHTML = characterIntro;*/
 
     //console.log(detMills.dialogue());
 
@@ -112,7 +115,7 @@ class Character {
         return `${this._clue}`
     }
     dialogue () {
-        return `${this._description},${this._conversation}`
+        return `in my ${this._description}, ${this._conversation}`
     }
    
 }
@@ -146,6 +149,12 @@ function beginGame (){
             }
         }
     });
+}
+
+
+// restart game
+function restart (){
+    location.reload();
 }
 
 beginGame()

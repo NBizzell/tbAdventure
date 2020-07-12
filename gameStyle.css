@@ -14,7 +14,22 @@
     background-color: dimgray;
     justify-content: center;
     align-items: center;
+    text-align: center;
     border-radius: 15px;
-    padding: 3em;
+    padding: 2em;
     width:  30em;
+}
+
+.btn
+{
+    border-radius: 5px;
+    padding: 2px;
+    background-color: grey;
+    align-self: flex-end;
+}
+
+ .btn:hover 
+{
+    background-color: lightslategray;
+    color: red;
 }
