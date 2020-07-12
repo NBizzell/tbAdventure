@@ -82,7 +82,7 @@ function displayRoominfo(room){
     
     document.getElementById("characterid").innerHTML = room.character.name;
     
-    document.getElementById("convo").innerHTML = room.character.dialogue();
+    document.getElementById("convo").innerHTML = room.character.dialogue;
 
     //console.log(detMills.dialogue());
 
