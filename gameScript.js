@@ -49,45 +49,32 @@ room1.linkRoom ("north", room2);
 room1.linkRoom ("east", room3);
 room1.linkRoom ("west", room4);
 
-console.log(room1._linkedRooms);
-
 //Room2 links
 
 room2.linkRoom ("south", room1);
 room2.linkRoom ("east", room5);
 room2.linkRoom ("west", room6);
 
-console.log(room2._linkedRooms);
-
 //Room3 links
 
 room3.linkRoom ("west", room1);
 room3.linkRoom ("north", room5);
 
-console.log(room3._linkedRooms);
-
 //Room4 links
 
 room4.linkRoom ("east", room1);
-
-console.log(room4._linkedRooms);
 
 //Room5 links
 
 room5.linkRoom ("south", room3);
 room5.linkRoom ("west", room2);
 
-console.log(room5._linkedRooms);
-
 //Room6 links
 
 room6.linkRoom ("east", room2);
 
-console.log(room6._linkedRooms);
 
-//console.log (room1.move("north"));
-//console.log (room1.move("south"));
-
+// disply Room function
 
 function displayRoominfo(room){
     text = room.describe()
@@ -95,6 +82,9 @@ function displayRoominfo(room){
     document.getElementById("roomid").innerHTML = text;
 
 }
+
+
+// begin Game & Navigate function
 
 function beginGame (){
     currentRoom = room4;
