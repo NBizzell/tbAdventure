@@ -23,6 +23,9 @@ class Room {
     get character() {
         return this._character;
     }
+    set character(value){
+        this._character = value;
+    }
     describe (){
         return `You're in the ${this._name}, it's a ${this._size} room, the walls are ${this._colour}. . it looks like ${this._desc}`
     }
@@ -40,11 +43,11 @@ class Room {
 }
 
 //Rooms
-const room1 = new Room ("Kitchen", "large", "no one's been here in a while. . north is the lounge, there's blood trails to the east","grey and dirty. . the colour of misery");
-const room2 = new Room ("Lounge", "huge", "someone trashed the place. . signs of a struggle? kitchen is to the south. .  there's a dark door to the west..","filthy");
-const room3 = new Room ("Bathroom", "tiny", "all the problems started. . or ended here. . the bedroom is to the north, kitchen to the west","covered in blood");
+const room1 = new Room ("Kitchen", "large", "no one's been here in a while. . north is the lounge, there's a bathroom to the east","grey and dirty. . the colour of misery");
+const room2 = new Room ("Lounge", "huge", "someone trashed the place. . signs of a struggle? kitchen is to the south. .  there's a dark door to the west.. and more blood. . answers often lie behind every door. . maybe this is where the story ends?  ","filthy");
+const room3 = new Room ("Bathroom", "tiny", "all the problems started. . or ended here. . the blood leads north, the kitchen is to the west","covered in blood");
 const room4 = new Room ("Garage", "dirty", "it's never been cleaned, junk everywhere. .  The kitchen is to the East, it's not the most inviting of places..","covered in old posters. ");
-const room5 = new Room ("bedroom", "cold", "someone came in through the window here while they slept..  the lounge is to the west, bathroom to the south. . blood leads to the bathroom. .","pink. . the wallpaper is peeling.. underneath is old white paint. . flaking away. .");
+const room5 = new Room ("bedroom", "cold", "someone came in through the window while they slept..  the lounge is to the west. . blood and drag marks lead from there.. bathroom to the south. .","pink. . the wallpaper is peeling.. underneath is old white paint. . flaking away. .");
 const room6 = new Room ("cellar", "dark", "there's no way out of here, except the way you came in","wet. . ");
 
 //Room1 links
@@ -76,6 +79,12 @@ function displayRoominfo(room){
     text = room.describe()
 
     document.getElementById("roomid").innerHTML = text;
+    
+    document.getElementById("characterid").innerHTML = room.character.name;
+    
+    document.getElementById("convo").innerHTML = room.character.dialogue();
+
+    //console.log(detMills.dialogue());
 
 }
 
@@ -102,9 +111,10 @@ class Character {
     talk () {
         return `${this._clue}`
     }
-    describe () {
-        return `Hi I'm ${this._name}. .  in my ${this._description}, ${this._conversation}`
+    dialogue () {
+        return `${this._description},${this._conversation}`
     }
+   
 }
 
 // Characters
@@ -124,6 +134,7 @@ function beginGame (){
         if (event.key === "Enter"){
             let command = document.getElementById("userinput").value.toLowerCase();
             const directions = ["north", "east", "west", "south"]
+            //const commands = ["talk","take","search"]
             if (directions.includes(command)){
                 currentRoom = currentRoom.move(command)
                 displayRoominfo(currentRoom);
