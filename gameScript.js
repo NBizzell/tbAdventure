@@ -80,10 +80,10 @@ function displayRoominfo(room){
 
     document.getElementById("roomid").innerHTML = text;
 
-    document.getElementById("characterid").innerHTML = room.character.name;
-
-    document.getElementById("convo").innerHTML = room.character.dialogue;
-    
+    if (room.character != "") {
+        document.getElementById("characterid").innerHTML = room.character.name;
+        document.getElementById("convo").innerHTML = room.character.dialogue();
+    }
     /*let characterIntro = "in my " + room.character.description + " " + room.character.conversation;
     document.getElementById("convo").innerHTML = characterIntro;*/
 
